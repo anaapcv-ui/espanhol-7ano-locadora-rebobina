@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura Guiada · Locadora Rebobina · Espanhol 7º</title>
+<style>
+  :root{
+    --fundo:#15120f; --fundo2:#221c16; --fundo3:#0e0b09; --borda:#3d342b; --borda2:#5a4a3a;
+    --ouro:#ffd23f; --coral:#ff5a5a; --turq:#4d8dff; --lilas:#ff9f43; --verde:#3ddc84; --vermelho:#ff4b4b;
+    --texto:#f6efe4; --cinza:#ab9f8e; --creme:#f7f0e2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:
+    radial-gradient(900px 480px at 50% -8%,#3b2a14,#15120f 64%),var(--fundo);
+    color:var(--texto);line-height:1.62;padding-bottom:60px;font-size:1.02rem}
+  h1,h2,h3{font-family:Tahoma,'Arial Rounded MT Bold',Verdana,sans-serif}
+  header{background:linear-gradient(120deg,#1f1813,#2e241a);padding:24px 18px;text-align:center;
+    box-shadow:0 4px 18px rgba(0,0,0,.5);border-bottom:4px solid var(--ouro)}
+  header .selo{font-size:.78rem;letter-spacing:2px;color:#ffe9a3;text-transform:uppercase}
+  header h1{font-size:1.5rem;margin:6px 0 2px}
+  header p{color:#e6dccb;font-size:.92rem}
+  .wrap{max-width:840px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:.85rem;border:1px solid var(--borda)}
+  .barra-nav a.on{background:var(--ouro);color:#2a2000;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .pote-box{display:flex;align-items:center;gap:16px;background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;padding:14px 16px;margin-bottom:16px}
+  .pote{position:relative;width:62px;height:82px;border:3px solid var(--creme);border-top-width:8px;border-radius:10px 10px 18px 18px;overflow:hidden;flex-shrink:0;background:#0d0a08}
+  .pote .nivel{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(0deg,#d9a520,var(--ouro));transition:height .6s}
+  .pote .rot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:bold;color:#2a2000;text-shadow:0 0 3px #fff6;letter-spacing:1px}
+  .pote-box .info{flex:1}
+  .pote-box .info b{color:var(--ouro)}
+  .meta{height:10px;background:var(--borda);border-radius:6px;overflow:hidden;margin-top:6px}
+  .meta div{height:100%;width:0;background:linear-gradient(90deg,var(--ouro),var(--coral));transition:width .6s}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-radius:14px;padding:16px;margin-bottom:16px}
+  .intro h2{color:var(--ouro);font-size:1.12rem;margin-bottom:8px}
+  .intro ol{margin:8px 0 0 20px}
+  .legenda{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:.82rem}
+  .legenda span{background:var(--fundo3);border:1px solid var(--borda2);border-radius:10px;padding:3px 9px}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;
+    background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .bloco{background:var(--fundo2);border:1px solid var(--borda);border-left:6px solid var(--nc,var(--ouro));border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+  .bloco.travado{opacity:.55}
+  .bloco.ouro{--nc:var(--ouro)} .bloco.coral{--nc:var(--coral)} .bloco.lilas{--nc:var(--lilas)} .bloco.turq{--nc:var(--turq)} .bloco.verde{--nc:var(--verde)}
+  .bloco-cab{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(90deg,#2a2119,#31261b);border-bottom:1px solid var(--borda)}
+  .moeda{width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff2b8,var(--ouro) 45%,#b98a12);color:#4a3600;
+    display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.5),inset 0 0 0 3px rgba(120,80,0,.35);font-family:Tahoma,Verdana,sans-serif}
+  .bloco.travado .moeda{filter:grayscale(1)}
+  .bloco-cab h3{font-size:1.06rem;color:#fff}
+  .bloco-cab .rotulo{font-size:.7rem;color:var(--cinza);letter-spacing:1px;text-transform:uppercase}
+  .bloco-corpo{padding:16px}
+  .texto p{margin-bottom:10px}
+  .texto ul{margin:0 0 10px 20px}
+  .texto li{margin-bottom:6px}
+  .texto .destaque{color:var(--nc);font-weight:bold}
+  .es{color:#ffe28a;font-style:italic;white-space:normal}
+  .som{background:none;border:1px solid var(--borda2);border-radius:6px;padding:0 4px;margin-left:3px;font-size:.78rem;vertical-align:middle;color:var(--texto)}
+  .som:hover{background:#3d342b}
+  .quadro{width:100%;border-collapse:collapse;font-size:.9rem;margin:4px 0 12px}
+  .quadro th,.quadro td{border:1px solid var(--borda2);padding:6px 8px;text-align:left;vertical-align:top}
+  .quadro th{background:#2e241a;color:var(--nc,var(--ouro))}
+  .olhar{background:#2f2a0c;border-left:3px solid var(--ouro);padding:8px 12px;margin:0 0 10px;border-radius:0 8px 8px 0;font-size:.93rem}
+  .olhar b{color:var(--ouro)}
+  .campanha{background:var(--creme);color:#2b2a20;border-radius:10px;padding:12px 14px;margin:0 0 10px;box-shadow:3px 4px 0 rgba(0,0,0,.35)}
+  .campanha .es{color:#5a3d00}
+  .campanha .som{color:#2b2a20;border-color:#c9bfa0}
+  .cadeado{padding:22px 16px;text-align:center;color:var(--cinza);font-size:.9rem}
+  .perg{background:var(--fundo3);border:1px solid var(--borda);border-radius:12px;padding:12px;margin-top:14px}
+  .perg.red{border-color:var(--vermelho);box-shadow:0 0 0 1px var(--vermelho)}
+  .perg .tag{display:inline-block;font-size:.66rem;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:10px;margin-bottom:6px}
+  .tag.conc{background:#203a44;color:#9fd8e6}
+  .tag.apl{background:#3a3315;color:#f3dc8f}
+  .perg label{display:block;font-weight:600;margin-bottom:8px}
+  .perg textarea{width:100%;min-height:72px;background:#0c0a08;color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:9px;font-family:inherit;font-size:.96rem;resize:vertical}
+  .aviso{margin-top:8px;padding:9px 11px;border-radius:8px;font-size:.86rem;display:none}
+  .aviso.amarelo{display:block;background:#4a3d12;border:1px solid var(--ouro);color:#ffe9ad}
+  .aviso.vermelho{display:block;background:#4a1717;border:1px solid var(--vermelho);color:#ffc9c9}
+  .modelo{margin-top:10px;padding:10px 12px;background:#1b2b1c;border:1px solid var(--verde);border-radius:8px;font-size:.9rem;display:none}
+  .modelo.show{display:block}
+  .modelo .lab{color:#9be3b6;font-weight:bold;font-size:.78rem;text-transform:uppercase;letter-spacing:1px}
+  .chk{margin-top:10px;font-size:.88rem}
+  .chk .item{display:flex;align-items:center;gap:8px;margin:6px 0;flex-wrap:wrap}
+  .chk .item span{flex:1;min-width:180px}
+  .chk .simnao button{border:1px solid var(--borda2);background:#0c0a08;color:var(--texto);border-radius:6px;padding:4px 10px;margin-left:4px;font-size:.8rem}
+  .chk .simnao button.sim.ativo{background:var(--verde);border-color:var(--verde);color:#062012}
+  .chk .simnao button.nao.ativo{background:var(--vermelho);border-color:var(--vermelho);color:#fff}
+  .conferir{margin-top:14px;background:var(--ouro);color:#2a2000;border:none;border-radius:10px;padding:11px 18px;font-size:1rem;font-weight:bold;width:100%}
+  .conferir:disabled{background:#2e2620;color:#8a7d6d;cursor:not-allowed}
+  .status-bloco{margin-top:10px;text-align:center;font-weight:bold;font-size:.95rem}
+  .prox{margin-top:12px;text-align:center}
+  .prox a{color:var(--ouro);text-decoration:none;font-weight:bold}
+  .peg{background:#3a1616;border:2px solid var(--coral);border-radius:16px;padding:16px;margin-top:20px}
+  .peg h3{color:#ffb8b8;margin-bottom:10px}
+  .peg ol{margin-left:20px}
+  .peg li{margin-bottom:7px}
+  .cobertura{background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;padding:16px;margin-top:18px}
+  .cobertura h3{color:var(--ouro);margin-bottom:10px}
+  table.cob{width:100%;border-collapse:collapse;font-size:.86rem}
+  table.cob th,table.cob td{border:1px solid var(--borda);padding:7px 9px;text-align:left}
+  table.cob th{background:#2e241a}
+  .revisar{background:#3a300a;border:2px solid var(--ouro);border-radius:16px;padding:16px;margin-top:18px}
+  .revisar h3{color:var(--ouro);margin-bottom:8px}
+  .revisar ul{margin-left:18px}
+  .relatorio{background:var(--fundo2);border:1px dashed var(--ouro);border-radius:14px;padding:16px;margin-top:18px;font-size:.9rem}
+  .relatorio h3{color:var(--ouro);margin-bottom:8px}
+  .trilha-fim{background:linear-gradient(120deg,#1f2c1c,#24361f);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#9be3b6;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062012;text-decoration:none;font-weight:bold;padding:11px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#2e2620;color:#8a7d6d;pointer-events:none}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:1px solid var(--ouro);border-radius:14px;padding:20px;max-width:420px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal button{background:var(--ouro);color:#2a2000;border:none;border-radius:8px;padding:9px 16px;font-weight:bold}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+
+  /* ===== Locadora Rebobina: progresso em forma de fita VHS ===== */
+  .pote{width:104px;height:64px;border:3px solid var(--creme);border-top-width:3px;border-radius:8px;background:#0d0a08}
+  .pote::before,.pote::after{content:'';position:absolute;top:18px;width:22px;height:22px;border-radius:50%;border:3px solid var(--creme);background:#1a1410;z-index:2}
+  .pote::before{left:14px}.pote::after{right:14px}
+  .pote .rot{align-items:flex-end;padding-bottom:3px;z-index:3;color:#2a2000}
+  .moeda{border-radius:8px;background:linear-gradient(180deg,#fff2b8,var(--ouro) 60%,#c99a12);color:#3a2a00}
+  .es{color:#ffe28a;font-style:italic;white-space:normal}
+</style>
+</head>
+<body>
+<header>
+  <div class="selo">Locadora Rebobina · Espanhol 7º ano · CCF</div>
+  <h1>📖 Leitura Guiada · A Prateleira de Fitas</h1>
+  <p>Unidad 8 · El cine y las series · pp. 118, 119, 122, 123, 126 e 127 · Prova 05/11</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a class="on" href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html" data-etapa="quiz">🎯 Quiz</a>
+    <a href="resumo.html" data-etapa="resumo">🗺️ Resumo</a>
+    <a href="simulado.html" data-etapa="simulado">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="pote-box">
+    <div class="pote"><div class="nivel" id="nivel"></div><div class="rot">VHS</div></div>
+    <div class="info">
+      <div><b>Fitas assistidas:</b> <span id="meta-txt">0 de 8 fitas</span></div>
+      <div class="meta"><div id="meta-barra"></div></div>
+      <div style="font-size:.82rem;color:var(--cinza);margin-top:4px">Cada bloco conferido é uma fita assistida e devolvida à prateleira.</div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <h2>📼 Bem-vindo(a) à Locadora Rebobina!</h2>
+    <p>Esta locadora só tem <b>8 fitas</b> — e cada uma é um pedaço da Unidad 8 do seu livro (<b>El cine y las series</b>). Você pega uma fita, “assiste” (lê o bloco), responde e devolve. A próxima fita só sai da prateleira quando você devolve a anterior.</p>
+    <div class="legenda">
+      <span><b style="color:var(--ouro)">●</b> Gêneros do cinema (fitas 1–3)</span>
+      <span><b style="color:var(--turq)">●</b> Palavras do cinema (fita 4)</span>
+      <span><b style="color:var(--coral)">●</b> Pretérito Pluscuamperfecto (fitas 5–6)</span>
+      <span><b style="color:var(--lilas)">●</b> Pronombres de objeto directo (fitas 7–8)</span>
+    </div>
+    <ol>
+      <li>Leia o bloco com calma. Tudo vem das páginas do seu livro (a página está no topo de cada fita).</li>
+      <li>Toque no 🔊 para ouvir o espanhol.</li>
+      <li>Responda as 3 perguntas <b>escrevendo com as suas palavras</b>. Não vale copiar do texto.</li>
+      <li>Clique em <b>Conferir</b>: aparecem a resposta-modelo e uma autoavaliação Sim/Não.</li>
+      <li>Com as 8 fitas devolvidas e a autoavaliação respondida, o <b>🎯 Quiz destrava</b>.</li>
+    </ol>
+  </div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div id="blocos"></div>
+
+  <div class="peg">
+    <h3>⚠️ 10 Pegadinhas da Prova (não caia nelas!)</h3>
+    <ol>
+      <li><b>Terror × suspense:</b> terror quer dar <b>medo</b> (<span class="es">miedo</span>, sobrenatural, macabro); suspense cria <b>tensão</b> (<span class="es">incertidumbre</span>, peligro, giros inesperados).</li>
+      <li><b>Documental</b> mostra fatos e pessoas <b>reais</b> (<span class="es">hechos reales</span>) — por isso <i>Nostalgia de la luz</i> é documental.</li>
+      <li><b>Drama</b> fala de emoções, relações e conflitos (<span class="es">el amor y la pérdida</span>) — <i>El hijo de la novia</i> é drama; <i>La vida de los peces</i> é romance (pista: <span class="es">su gran amor</span>).</li>
+      <li><b>Nomes que enganam:</b> <span class="es">documental</span> = documentário · <span class="es">del oeste</span> = faroeste · <span class="es">ciencia ficción</span> (com acento) · <span class="es">policíaco</span> = policial · <span class="es">palomitas</span> = pipoca · <span class="es">entradas</span> = ingressos · <span class="es">butacas</span> = poltronas · <span class="es">pantalla</span> = tela.</li>
+      <li><b>O artigo manda na lacuna:</b> <span class="es">La ___</span> → actriz (feminino singular); <span class="es">El ___</span> → director; <span class="es">sus ___ / las ___</span> → palavra no plural.</li>
+      <li><b>Pluscuamperfecto = haber no IMPERFECTO + participio:</b> <span class="es">había, habías, había, habíamos, habíais, habían</span> + visto/dicho/comido…</li>
+      <li><span class="es">estaba</span>, <span class="es">era</span>, <span class="es">se proyectaba</span> <b>não</b> são Pluscuamperfecto: falta o haber + participio.</li>
+      <li><b>Participios irregulares</b> não terminam em -ado/-ido: <span class="es">hecho, dicho, visto, escrito, puesto, abierto, vuelto, roto</span> (nunca “hacido”, “decido”, “abrido”).</li>
+      <li><b>O pronome concorda</b> com o que substitui: <span class="es">flores → las</span> · <span class="es">el libro → lo</span> · <span class="es">los niños → los</span>. Com imperativo ou infinitivo, vai <b>grudado</b>: <span class="es">cómprala</span>, <span class="es">comprarla</span>.</li>
+      <li><b>¡Ojo!</b> “Vi a ella” ✗ e “Compré él” ✗. Em espanhol: <span class="es">La vi.</span> · <span class="es">Lo compré.</span> E a resposta curta leva o pronome: <span class="es">Sí, los compré.</span></li>
+    </ol>
+  </div>
+
+  <div class="cobertura">
+    <h3>🧭 Cobertura: Tópico → Fita</h3>
+    <table class="cob">
+      <thead><tr><th>Tópico</th><th>Página do livro</th><th>Fita</th></tr></thead>
+      <tbody>
+        <tr><td>Los géneros del cine (16 gêneros e ícones)</td><td>p. 118 (ex. 1) + Síntesis p. 127</td><td>1</td></tr>
+        <tr><td>Definições dos gêneros</td><td>p. 126 (ex. 3)</td><td>2</td></tr>
+        <tr><td>Pôsteres, sinopses e gênero de cada filme; Conoce más (Metegol)</td><td>pp. 118–119 (ex. 2 e 3)</td><td>3</td></tr>
+        <tr><td>Palavras do cinema</td><td>p. 119 (ex. 4) + p. 126 (ex. 1 e 2)</td><td>4</td></tr>
+        <tr><td>Pretérito Pluscuamperfecto: formação e texto da Clarice</td><td>p. 122 (ex. 1)</td><td>5</td></tr>
+        <tr><td>Participios irregulares e exercícios do Pluscuamperfecto</td><td>pp. 122–123 (ex. 2 a 5) + p. 126 (ex. 4)</td><td>6</td></tr>
+        <tr><td>Pronombres de objeto directo: definição, tabela, concordância</td><td>p. 123 (Fíjate en la lengua) + p. 126 (ex. 5) + Síntesis p. 127</td><td>7</td></tr>
+        <tr><td>Posição do pronome e o ¡Ojo!</td><td>p. 123 (Fíjate en la lengua)</td><td>8</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:var(--cinza);margin-top:8px">As páginas 120, 121, 124 e 125 não vieram nas fotos e ficaram de fora. A atividade 5 da p. 119 (ouvir um áudio) também ficou de fora.</p>
+  </div>
+
+  <div class="revisar" id="revisar" style="display:none">
+    <h3>🔁 Para revisar antes da prova</h3>
+    <ul id="revisar-lista"></ul>
+  </div>
+
+  <div class="relatorio">
+    <h3>📊 Para os pais (resumo desta leitura)</h3>
+    <div id="rel-conteudo">Conforme as fitas forem sendo conferidas, o resumo aparece aqui.</div>
+  </div>
+
+  <div class="trilha-fim" id="trilha-fim">
+    <h3>🔒 Próxima etapa: Quiz</h3>
+    <p id="trilha-fim-txt">O Quiz destrava quando as 8 fitas forem devolvidas e a autoavaliação respondida.</p>
+    <a class="btn off" id="btn-prox" href="quiz.html">🎯 Ir para o Quiz</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 📼 Seja gentil: rebobine antes de devolver!</div>
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button onclick="fecharModal()" id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='locadora_rebobina_esp7';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); links[i].setAttribute('title','Ainda trancado'); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); } }
+}
+
+/* ====== ÁUDIO (voz do navegador · espanhol) ====== */
+function speak(t){ try{ if(!('speechSynthesis' in window)) return; var u=new SpeechSynthesisUtterance(t); u.lang='es-ES'; u.rate=0.82; speechSynthesis.cancel(); speechSynthesis.speak(u); }catch(e){} }
+function ligarAudio(raiz){
+  var els=(raiz||document).querySelectorAll('.es');
+  for(var i=0;i<els.length;i++){ (function(el){ if(el.getAttribute('data-som')) return; el.setAttribute('data-som','1'); var b=document.createElement('button'); b.className='som'; b.type='button'; b.title='Ouvir em espanhol'; b.textContent='🔊'; var frase=el.textContent; b.addEventListener('click',function(){ speak(frase); }); el.parentNode.insertBefore(b, el.nextSibling); })(els[i]); }
+}
+/* [[texto]] vira frase em espanhol com áudio */
+function enHTML(s){ return s.replace(/\[\[(.+?)\]\]/g,"<span class='es'>$1</span>"); }
+
+/* ====== AS 8 FITAS (conteúdo SÓ das fotos do livro: Unidad 8, pp. 118, 119, 122, 123, 126 e 127 — e as unidades 5 e 7 que o próprio livro manda relembrar) ====== */
+var BLOCOS = [
+ {
+  rotulo:"Fita 1 · Unidad 8 · p. 118 (Hora del vocabulario) e p. 127 (Síntesis)", v:"1", u:"ouro",
+  titulo:"Los géneros del cine: os gêneros de filmes e séries",
+  texto:[
+   "O tema da unidade é <span class='destaque'>El cine y las series</span> (o cinema e as séries). Na seção <b>Hora del vocabulario</b> (p. 118), o livro pergunta [[¿Te gustan las películas? ¿De qué género?]] e apresenta <b>16 gêneros do cinema em espanhol</b>, cada um com um <b>ícone</b> (desenho) que dá a pista:",
+   "<table class='quadro'><tr><th>Em espanhol</th><th>Em português</th><th>Ícone do livro</th></tr><tr><td>[[fantasia]]</td><td>fantasia</td><td>castelo</td></tr><tr><td>[[animación]]</td><td>animação</td><td>bola</td></tr><tr><td>[[acción]]</td><td>ação</td><td>avião de caça</td></tr><tr><td>[[histórico]]</td><td>histórico</td><td>mapa com caminho</td></tr><tr><td>[[policíaco]]</td><td>policial</td><td>chapéu-coco e máscara</td></tr><tr><td>[[ciencia ficción]]</td><td>ficção científica</td><td>foguete (na Síntesis, um planeta)</td></tr><tr><td>[[comedia]]</td><td>comédia</td><td>carinha dando risada</td></tr><tr><td>[[romance]]</td><td>romance</td><td>corações</td></tr><tr><td>[[terror]]</td><td>terror</td><td>fantasma</td></tr><tr><td>[[aventura]]</td><td>aventura</td><td>grupo de pessoas</td></tr><tr><td>[[drama]]</td><td>drama</td><td>máscaras de teatro (uma triste, uma alegre)</td></tr><tr><td>[[musical]]</td><td>musical</td><td>notas musicais</td></tr><tr><td>[[documental]]</td><td>documentário</td><td>câmera de filmar</td></tr><tr><td>[[suspense]]</td><td>suspense</td><td>impressão digital com lupa</td></tr><tr><td>[[del oeste]]</td><td>faroeste</td><td>chapéu de caubói</td></tr><tr><td>[[biografía]]</td><td>biografia</td><td>pessoa de terno e gravata</td></tr></table>",
+   "Na <b>Síntesis</b> (p. 127), o livro junta tudo num <b>mapa mental</b>: no centro, [[EL CINE Y LAS SERIES]]; dele sai o quadro [[LOS GÉNEROS]], rodeado pelos ícones de cada gênero. O mesmo mapa liga o tema aos [[PRONOMBRES DE OBJETO DIRECTO]] (Fitas 7 e 8).",
+   "<div class='olhar'><b>Olhar de prova:</b> atenção à escrita em espanhol — [[ciencia ficción]] (com acento em <b>ficción</b>), [[policíaco]], [[biografía]], [[animación]], [[acción]]. E dois nomes bem diferentes do português: [[documental]] = documentário e [[del oeste]] = faroeste.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Com as suas palavras: o que a página 118 apresenta e como o livro ajuda você a reconhecer cada gênero?",modelo:"Apresenta os gêneros do cinema (de filmes e séries) em espanhol. Cada gênero tem um ícone, um desenho que dá a pista do tipo de filme.",chk:["Disse que são os gêneros de filmes/séries em espanhol?","Disse que cada gênero tem um ícone (desenho) como pista?"]},
+   {tag:"apl",q:"Escreva em espanhol o gênero de cada ícone do livro: (a) máscaras de teatro; (b) chapéu de caubói; (c) impressão digital com lupa; (d) fantasma.",modelo:"(a) drama (b) del oeste (c) suspense (d) terror",chk:["Acertei drama e del oeste?","Acertei suspense e terror?"]},
+   {tag:"apl",q:"Como se escreve em espanhol: documentário, faroeste, ficção científica e policial? Depois escreva, em espanhol, o nome do seu gênero favorito.",modelo:"documental · del oeste · ciencia ficción · policíaco. Gênero favorito: por exemplo, comedia.",chk:["Escrevi documental e del oeste?","Escrevi ciencia ficción e policíaco (com acento)?","Escrevi o meu gênero favorito em espanhol?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 2 · Unidad 8 · p. 126 (Ahora ya lo sé, ex. 3)", v:"2", u:"coral",
+  titulo:"Como o livro define seis gêneros",
+  texto:[
+   "No exercício 3 da página <b>Ahora ya lo sé</b> (p. 126), o livro pede para <b>associar os gêneros às suas definições</b>. Essas definições são o melhor jeito de <b>reconhecer um gênero numa questão de prova</b>:",
+   "<ul><li><b>[[Musical]]</b>: [[Género que integra música y canciones en la narrativa, a menudo con números musicales y coreografías.]] → mistura música e canções na história, com números musicais e coreografias.</li><li><b>[[Drama]]</b>: [[Género que se centra en las emociones humanas, relaciones interpersonales y conflictos personales o sociales, explorando temas universales como el amor y la pérdida.]] → fala das emoções, das relações entre as pessoas e dos conflitos, com temas como o amor e a perda.</li><li><b>[[Terror]]</b>: [[Género que busca provocar miedo y ansiedad en el espectador por medio de elementos sobrenaturales o de horror visceral, explorando lo desconocido y lo macabro.]] → quer dar medo e ansiedade, com coisas sobrenaturais, o desconhecido e o macabro.</li><li><b>[[Ciencia ficción]]</b>: [[Género que explora escenarios futuristas o alternativos, basados en la ciencia y la tecnología, con elementos distópicos.]] → cenários do futuro (ou alternativos), com ciência e tecnologia.</li><li><b>[[Suspense]]</b>: [[Género que genera tensión y anticipación en la audiencia mediante la creación de situaciones de incertidumbre y peligro, con giros inesperados y revelaciones impactantes.]] → cria tensão e expectativa, com incerteza, perigo, reviravoltas e revelações.</li><li><b>[[Documental]]</b>: [[Género que presenta hechos, personas o eventos reales de manera objetiva, informativa y a menudo educativa.]] → mostra fatos, pessoas ou acontecimentos <b>reais</b>, de forma objetiva, informativa e muitas vezes educativa.</li></ul>",
+   "<b>Gabarito do ex. 3:</b> a) musical (VI) · b) drama (V) · c) terror (III) · d) ciencia ficción (I) · e) suspense (II) · f) documental (IV).",
+   "<div class='olhar'><b>Olhar de prova:</b> procure as <b>palavras-pista</b>. [[miedo]], [[sobrenaturales]], [[macabro]] → terror. [[tensión]], [[incertidumbre]], [[giros inesperados]] → suspense. [[hechos reales]] → documental. [[futuristas]], [[tecnología]] → ciencia ficción. [[emociones]], [[conflictos]], [[el amor y la pérdida]] → drama. [[canciones]], [[coreografías]] → musical.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Pelas definições do livro, qual é a diferença entre terror e suspense? Explique com as suas palavras.",modelo:"O terror quer provocar medo e ansiedade, com coisas sobrenaturais, desconhecidas ou macabras. O suspense cria tensão e expectativa, com incerteza, perigo e reviravoltas.",chk:["Disse que o terror é sobre medo (sobrenatural/macabro)?","Disse que o suspense é sobre tensão/incerteza/reviravoltas?"]},
+   {tag:"apl",q:"Filme 1: mostra a vida real de uma cidade, com informações, para ensinar. Filme 2: se passa no ano 3000, com robôs e muita tecnologia. Qual é o gênero de cada um (em espanhol) e qual palavra-pista da definição prova isso?",modelo:"Filme 1: documental (hechos reales, informativa, educativa). Filme 2: ciencia ficción (escenarios futuristas, ciencia y tecnología).",chk:["Respondi documental para o filme 1?","Respondi ciencia ficción para o filme 2?","Citei uma palavra-pista de cada definição?"]},
+   {tag:"apl",q:"Invente uma ideia curta de filme para dois gêneros: musical e drama. Diga qual pista da definição do livro você usou em cada um.",modelo:"Ex.: musical — uma turma monta um show cheio de canções e coreografias (pista: música, canciones, coreografías). Drama — uma família enfrenta brigas e a perda de alguém querido (pista: emociones, conflictos, el amor y la pérdida).",chk:["A ideia do musical tem música/canções/coreografias?","A ideia do drama tem emoções, relações ou conflitos?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 3 · Unidad 8 · pp. 118–119 (ex. 2 e 3) + Conoce más", v:"3", u:"lilas",
+  titulo:"Sinopses: descobrir o gênero pela história",
+  texto:[
+   "No ex. 2 (p. 118), o livro mostra <b>três pôsteres de filmes em língua espanhola</b> e pede para <b>adivinhar o gênero</b>. No ex. 3 (p. 119), dá a <span class='destaque'>sinopse</span> de cada um (um resumo curto da história) e pede o gênero, escolhendo entre <b>Romance, Drama e Documental</b>:",
+   "<ul><li><b>[[Nostalgia de la luz]]</b>: [[explora la conexión entre el cosmos y la historia de Chile a través de las historias de mujeres que buscan a sus seres queridos desaparecidos durante la dictadura de Pinochet.]]</li><li><b>[[La vida de los peces]]</b>: [[Andrés vive en Alemania desde hace diez años. Regresa a Chile, asiste a la fiesta de cumpleaños de uno de sus amigos y redescubre todo un mundo que dejó de ver, incluida Beatriz, su gran amor.]]</li><li><b>[[El hijo de la novia]]</b>: [[película argentina que muestra cómo Rafael lidia con las demandas de su restaurante, su relación con su familia y se pregunta lo qué es importante en la vida.]]</li></ul>",
+   "Como resolver: <b>Nostalgia de la luz → documental</b>: fala de fatos e pessoas <b>reais</b> (a história do Chile), como na definição de documental. <b>La vida de los peces → romance</b>: a pista é [[Beatriz, su gran amor]]. <b>El hijo de la novia → drama</b>: Rafael lida com o trabalho e a família e pensa no que é importante na vida — emoções, relações e conflitos, como na definição de drama.",
+   "No quadro <b>Conoce más</b> (p. 119), o livro indica um filme: <b>[[Metegol]]</b>, dirigido por <b>Juan José Campanella</b> (Argentina, Universal Studios, 2013). É um filme de <b>[[animación]]</b> argentino, baseado no conto <i>Memorias de un wing derecho</i>, de Roberto Fontanarrosa. A história segue <b>Amadeo</b>, [[un joven apasionado por el futbolín]] (o pebolim) que vive num pequeno povoado argentino.",
+   "<div class='olhar'><b>Olhar de prova:</b> a sinopse quase sempre traz uma <b>pista</b>: amor → romance; fatos reais → documental; família, conflitos e emoções → drama. (A atividade 5 da p. 119 é de ouvir um áudio e ficou fora deste kit.)</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"O que é uma sinopse e para que ela serviu no exercício 3?",modelo:"É um resumo curto da história de um filme. No exercício, serviu para descobrir o gênero de cada filme e conferir se o palpite pelo pôster estava certo.",chk:["Disse que é um resumo curto da história?","Disse que ajuda a descobrir o gênero?"]},
+   {tag:"apl",q:"Leia esta sinopse inventada e diga o gênero, em espanhol, com a pista: “Dos jóvenes se encuentran en una fiesta de cumpleaños y descubren su gran amor.”",modelo:"romance — a pista é “su gran amor”.",chk:["Respondi romance?","Citei a pista do amor (gran amor)?"]},
+   {tag:"apl",q:"Preencha a ficha do filme do “Conoce más”, como no ex. 5: Título, País de creación, Género e Director.",modelo:"Título: Metegol · País de creación: Argentina · Género: animación · Director: Juan José Campanella.",chk:["Escrevi Metegol, Argentina e animación?","Escrevi o diretor Juan José Campanella?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 4 · Unidad 8 · p. 119 (ex. 4) e p. 126 (ex. 1 e 2)", v:"4", u:"turq",
+  titulo:"Palabras del cine: as palavras do cinema",
+  texto:[
+   "No ex. 4 (p. 119) e nos ex. 1 e 2 (p. 126), o livro trabalha <b>palavras ligadas ao cinema</b>:",
+   "<ul><li>[[las palomitas]] — a pipoca (o balde listrado de pipoca da p. 119)</li><li>[[las entradas]] / [[la entrada]] — os ingressos / o ingresso</li><li>[[las butacas]] / [[la butaca]] — as poltronas do cinema (as cadeiras vermelhas das pp. 119 e 126)</li><li>[[la pantalla]] — a tela</li><li>[[la película]] — o filme</li><li>♂ [[el director]] · ♀ [[la directora]] — o diretor / a diretora (no ex. 5 aparece “Director(a)”)</li><li>♂ [[el actor]] · ♀ [[la actriz]] — o ator / a atriz (no ex. 4: [[los actores]])</li><li>e, nas frases do ex. 4: [[la sala]] (a sala), [[la función]] (a sessão), [[los espectadores]] (os espectadores), [[la actuación]] (a atuação).</li></ul>",
+   "<b>Gabarito do ex. 4 (p. 119)</b>, com as palavras do quadro [[palomitas · entradas · butacas · director · actriz]]:<br>a) [[Antes de la función, todos buscaban sus butacas en la sala.]]<br>b) [[¿Has comprado las entradas para la película de esta noche?]]<br>c) [[La actriz estaba dispuesta a recibir a los espectadores ansiosos.]]<br>d) [[Durante la película todos disfrutaron de palomitas mientras apreciaban la actuación.]]<br>e) [[El director dio indicaciones precisas a los actores antes de la función.]]",
+   "<div class='olhar'><b>Olhar de prova:</b> a palavra <b>antes da lacuna</b> ajuda! [[sus]] e [[las]] pedem palavra no <b>plural</b> (butacas, entradas); [[La]] pede palavra <b>feminina no singular</b> (actriz); [[El]] pede <b>masculina</b> (director). No ex. 1 da p. 126, o caça-palavras tem: [[pantalla · butaca · entrada · palomitas · actriz · película]].</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Na frase c do exercício 4 (“La ___ estaba dispuesta a recibir a los espectadores ansiosos”), por que a resposta só pode ser actriz?",modelo:"Porque “La” pede uma palavra feminina e no singular. Das palavras do quadro, só actriz é assim: palomitas, entradas e butacas estão no plural, e director é masculino.",chk:["Expliquei pela palavra La (feminino, singular)?","Disse por que as outras não servem (plural ou masculino)?"]},
+   {tag:"apl",q:"Escreva duas frases em espanhol, uma com butacas e outra com palomitas, como pede o ex. 2 da p. 126.",modelo:"Ex.: Las butacas del cine son rojas. / Durante la película, comemos palomitas.",chk:["Usei butacas numa frase com sentido?","Usei palomitas numa frase com sentido?"]},
+   {tag:"apl",q:"Escreva em espanhol, com o artigo: (a) os ingressos; (b) a tela; (c) o filme; (d) a atriz; (e) a diretora.",modelo:"(a) las entradas (b) la pantalla (c) la película (d) la actriz (e) la directora",chk:["Acertei las entradas e la pantalla?","Acertei la película, la actriz e la directora?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 5 · Unidad 8 · p. 122 (Cajón de lengua, ex. 1)", v:"5", u:"ouro",
+  titulo:"El Pretérito Pluscuamperfecto: como se forma",
+  texto:[
+   "Na seção <b>Cajón de lengua</b> (p. 122), o livro relembra o que foi visto na unidade anterior: o <span class='destaque'>Pretérito Pluscuamperfecto</span> se forma com o verbo <b>[[haber]]</b> no <b>Pretérito Imperfecto</b> + o <b>participio</b>.",
+   "<table class='quadro'><tr><th>Persona</th><th>haber (imperfecto)</th><th>+ participio</th></tr><tr><td>yo</td><td>[[había]]</td><td rowspan='6'>[[visto]] · [[dicho]] · [[imaginado]] · [[esperado]] · [[escuchado]] · [[estado]]</td></tr><tr><td>tú</td><td>[[habías]]</td></tr><tr><td>él / ella / usted</td><td>[[había]]</td></tr><tr><td>nosotros(as)</td><td>[[habíamos]]</td></tr><tr><td>vosotros(as)</td><td>[[habíais]]</td></tr><tr><td>ellos / ellas / ustedes</td><td>[[habían]]</td></tr></table>",
+   "Participio regular (Unidad 5 do livro): verbos em <b>-ar → -ado</b> ([[imaginar → imaginado]], [[esperar → esperado]], [[escuchar → escuchado]]) e verbos em <b>-er/-ir → -ido</b> ([[comer → comido]]).",
+   "O livro pede para sublinhar os verbos no Pluscuamperfecto neste texto sobre a ida de Clarice ao cinema: [[Clarice nunca había visto nada parecido. Sus amigas le habían dicho que era increíble, pero no había imaginado que se sentiría así. Estaba encantada. La sala de cine estaba llena de emoción mientras se proyectaba la película que tanto había esperado ver. Desde que había escuchado hablar de ella, había estado ansiosa por presenciar la magia del cine.]]",
+   "<b>Os 6 verbos no Pluscuamperfecto:</b> [[había visto]] · [[habían dicho]] · [[había imaginado]] · [[había esperado]] · [[había escuchado]] · [[había estado]]. Repare no exemplo do ex. 3: [[Nosotros habíamos visto la película antes de que tú llegaras.]] — uma ação do passado que <b>já tinha acontecido antes de outra</b>.",
+   "<div class='olhar'><b>Olhar de prova:</b> [[estaba encantada]], [[era increíble]] e [[se proyectaba]] <b>NÃO</b> são Pluscuamperfecto: não têm haber + participio. O Pluscuamperfecto <b>sempre</b> tem as duas partes: [[había]] + [[visto]].</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Como se forma o Pretérito Pluscuamperfecto? Explique com as suas palavras e dê um exemplo do texto da Clarice.",modelo:"Com o verbo haber no pretérito imperfeito (había, habías, había, habíamos, habíais, habían) mais o particípio. Ex.: había visto.",chk:["Disse haber no imperfecto + participio?","Dei um exemplo com había/habían + particípio?"]},
+   {tag:"apl",q:"Na frase “Sus amigas le habían dicho que era increíble”, qual verbo está no Pluscuamperfecto? E por que “era” não está?",modelo:"“habían dicho” está no Pluscuamperfecto (haber + participio). “era” não tem haber nem particípio, então não é Pluscuamperfecto.",chk:["Respondi habían dicho?","Expliquei que era não tem haber + particípio?"]},
+   {tag:"apl",q:"Complete com haber no imperfecto: (a) Nosotros ___ visto la película. (b) Vosotros ___ visto la película. (c) Tú ___ comido. (d) Ellas ___ escuchado.",modelo:"(a) habíamos (b) habíais (c) habías (d) habían",chk:["Acertei habíamos e habíais?","Acertei habías e habían?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 6 · Unidad 8 · pp. 122–123 (ex. 2 a 5) e p. 126 (ex. 4)", v:"6", u:"coral",
+  titulo:"Particípios irregulares e os exercícios do Pluscuamperfecto",
+  texto:[
+   "No ex. 2 (p. 122), o livro pergunta: [[¿Cuáles de estos participios son irregulares, es decir, no terminan en -ado o -ido?]] No texto da Clarice, os irregulares são <b>[[visto]]</b> (de ver) e <b>[[dicho]]</b> (de decir). Os outros (imaginado, esperado, escuchado, estado) são regulares.",
+   "O livro explica: [[Como vimos en la Unidad 5, hay algunos participios irregulares. Entonces el Pretérito Pluscuamperfecto de dichos verbos se forma con el verbo auxiliar haber + el participio irregular.]] Os irregulares da Unidad 5:",
+   "<table class='quadro'><tr><th>verbo</th><th>participio irregular</th><th>verbo</th><th>participio irregular</th></tr><tr><td>hacer</td><td>[[hecho]]</td><td>volver</td><td>[[vuelto]]</td></tr><tr><td>decir</td><td>[[dicho]]</td><td>abrir</td><td>[[abierto]]</td></tr><tr><td>ver</td><td>[[visto]]</td><td>romper</td><td>[[roto]]</td></tr><tr><td>escribir</td><td>[[escrito]]</td><td>descubrir</td><td>[[descubierto]]</td></tr><tr><td>poner</td><td>[[puesto]]</td><td>morir</td><td>[[muerto]]</td></tr></table>",
+   "<b>Ex. 3 (p. 122):</b> a) [[Mamá había escrito una carta cuando me fui.]] b) [[Nosotros habíamos visto la película antes de que tú llegaras.]] c) [[Los niños habían hecho la tarea antes de que la maestra la revisara.]] d) [[Yo había dicho la verdad antes de que me la preguntaras.]] e) [[Tú habías puesto la mesa cuando ellos llegaron.]]",
+   "<b>Ex. 4 (p. 126):</b> a) [[Cuando me lastimé, mi abuela ya me había dicho que subir allí era peligroso.]] b) [[¿Ya habías comido hamburguesas cuando viniste aquí?]] c) [[Mi madre me había hecho un batido cuando volví del juego.]] d) [[¿Vosotros nunca habíais visto esta película?]]",
+   "<b>Ex. 5c (p. 123)</b>, ordenando e conjugando: [[Cuando llegué a casa, ellos ya habían abierto la ventana.]] E no ex. 4 (p. 122), o livro usa [[ya]] (já) e [[todavía no]] (ainda não): [[Cuando ingresé a este ciclo escolar, yo ya…, pero todavía no…]]",
+   "<div class='olhar'><b>Olhar de prova:</b> o particípio irregular <b>não termina em -ado/-ido</b>: é [[había hecho]], [[había dicho]], [[había escrito]], [[había puesto]], [[había abierto]] — nunca “hacido”, “decido”, “escribido”, “ponido” ou “abrido”.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"O que é um particípio irregular, segundo o livro? Dê dois exemplos com o verbo de origem.",modelo:"É o particípio que não termina em -ado nem em -ido. Ex.: visto (ver) e dicho (decir); também hecho (hacer), escrito (escribir).",chk:["Disse que não termina em -ado/-ido?","Dei dois exemplos com o verbo de origem?"]},
+   {tag:"apl",q:"Complete no Pluscuamperfecto: (a) Cuando llegué, mi hermano ya ___ (hacer) palomitas. (b) Ellos ___ (escribir) la sinopsis. (c) ¿Tú ya ___ (ver) esta película?",modelo:"(a) había hecho (b) habían escrito (c) habías visto",chk:["Usei os particípios hecho, escrito e visto?","Usei a forma certa de haber (había, habían, habías)?"]},
+   {tag:"apl",q:"Ordene e conjugue, como no ex. 5c da p. 123: casa / a / Cuando / abrir / llegar (yo) / ellos / ventana / la / ya",modelo:"Cuando llegué a casa, ellos ya habían abierto la ventana.",chk:["Usei habían abierto (abrir → abierto)?","Comecei com Cuando llegué a casa?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 7 · Unidad 8 · p. 123 (Fíjate en la lengua) e p. 127 (Síntesis)", v:"7", u:"turq",
+  titulo:"Los pronombres de objeto directo: o que são",
+  texto:[
+   "No quadro <b>Fíjate en la lengua</b> (p. 123): [[Los pronombres de objeto directo en español se utilizan para sustituir un sustantivo que recibe la acción directa del verbo en una oración. Son usados para evitar repeticiones y hacer el texto más fluido al hacer una referencia a algo ya dicho.]] Ou seja: o pronome <b>substitui a palavra que recebe a ação do verbo</b>, para <b>não repetir</b>.",
+   "Exemplo do livro: em [[Ana compró el libro]], <b>el libro</b> é o objeto direto e pode ser trocado por <b>lo</b>: [[Ana lo compró.]]",
+   "<table class='quadro'><tr><th>Pronombre sujeto</th><th>Pronombre de objeto directo</th></tr><tr><td>[[Yo]]</td><td>[[me]]</td></tr><tr><td>[[Tú / Vos]]</td><td>[[te]]</td></tr><tr><td>[[Él / Ella / Usted]]</td><td>[[lo / la]]</td></tr><tr><td>[[Nosotros(as)]]</td><td>[[nos]]</td></tr><tr><td>[[Vosotros(as)]]</td><td>[[os]]</td></tr><tr><td>[[Ellos / Ellas / Ustedes]]</td><td>[[los / las]]</td></tr></table>",
+   "Os pronomes <b>concordam em gênero e número</b> com o substantivo que substituem: [[Laura ayudará a los niños → Laura los ayudará.]] · [[Diego compró las entradas → Diego las compró.]]",
+   "<b>Ex. 5 (p. 126)</b> — identificar o objeto direto e trocar: a) [[Pedro compró flores ayer.]] → OD: <b>flores</b> → [[Pedro las compró ayer.]] · b) [[Laura leyó el libro de aventuras en un día.]] → OD: <b>el libro de aventuras</b> → [[Laura lo leyó en un día.]]",
+   "<div class='olhar'><b>Olhar de prova:</b> na Síntesis (p. 127), as lacunas da tabela são justamente [[Él/Ella/Usted → lo/la]] e [[Ellos/Ellas/Ustedes → los/las]]. Masculino → lo/los; feminino → la/las; singular → lo/la; plural → los/las.</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Para que servem os pronomes de objeto direto, segundo o livro? Explique com as suas palavras.",modelo:"Servem para trocar a palavra que recebe a ação do verbo por um pronome, para não repetir e deixar o texto mais fluido.",chk:["Disse que substituem a palavra que recebe a ação do verbo?","Disse que é para não repetir / deixar o texto fluido?"]},
+   {tag:"apl",q:"Identifique o objeto direto e troque pelo pronome: “Mamá compró las palomitas.”",modelo:"OD: las palomitas → Mamá las compró.",chk:["Identifiquei las palomitas como objeto direto?","Usei las (feminino plural) antes de compró?"]},
+   {tag:"apl",q:"Troque o objeto direto pelo pronome certo: (a) Juan lee el libro. (b) Ana compró las entradas. (c) Laura ayudará a los niños.",modelo:"(a) Juan lo lee. (b) Ana las compró. (c) Laura los ayudará.",chk:["Usei lo e las certinho?","Usei los em Laura los ayudará?"]}
+  ]
+ },
+ {
+  rotulo:"Fita 8 · Unidad 8 · p. 123 (Fíjate en la lengua) e p. 126 (ex. 5)", v:"8", u:"lilas",
+  titulo:"Onde o pronome fica na frase — e o ¡Ojo! do livro",
+  texto:[
+   "O livro ensina <b>três posições</b> do pronome de objeto direto:",
+   "<ul><li><b>Antes do verbo conjugado</b> (o caso geral): [[Juan lo lee.]] · [[¿Lo encontraste?]]</li><li>Com o verbo no <b>infinitivo ou gerúndio</b>: pode ficar <b>antes do verbo auxiliar</b> ou <b>depois do verbo principal</b>, grudado: [[La quiero comprar.]] ou [[Quiero comprarla.]]</li><li>Com o verbo no <b>imperativo</b>: o pronome vai <b>depois do verbo e grudado nele</b>: [[Si te gusta, cómprala.]]</li></ul>",
+   "<b>¡Ojo!</b> (atenção!): [[en español no se admite el uso de los pronombres personales sujeto en lugar de los pronombres de objeto directo]] — como acontece no português falado do dia a dia. Por isso <b>não se diz</b> “Vi a ella” ✗ nem “Compré él” ✗.",
+   "Outro ponto: o espanhol <b>usa mais</b> esses pronomes que o português, que muitas vezes os omite. Em espanhol eles são <b>obrigatórios</b> em casos como: [[Mamá, ¿compraste los libros? Sí, los compré.]] (em português a gente diria só “Sim, comprei”).",
+   "<div class='olhar'><b>Olhar de prova:</b> [[cómprala]] e [[comprarla]] são uma palavra só (pronome grudado). E nunca responda só “Sí, compré”: em espanhol é [[Sí, los compré.]]</div>"
+  ],
+  perguntas:[
+   {tag:"conc",q:"Explique, com as suas palavras, as três posições do pronome de objeto direto que o livro ensina.",modelo:"1) Antes do verbo conjugado (Juan lo lee). 2) Com infinitivo ou gerúndio, antes do auxiliar ou depois do verbo principal, grudado (La quiero comprar / Quiero comprarla). 3) Com imperativo, depois do verbo e grudado (cómprala).",chk:["Falei de antes do verbo conjugado?","Falei das duas opções com infinitivo/gerúndio?","Falei do imperativo (depois e grudado)?"]},
+   {tag:"apl",q:"Escreva de duas formas, trocando “la película” por pronome: “Quiero ver la película.”",modelo:"La quiero ver. / Quiero verla.",chk:["Escrevi La quiero ver?","Escrevi Quiero verla (pronome grudado)?"]},
+   {tag:"apl",q:"Corrija como o livro ensina: (a) “Vi a ella en el cine.” (b) “—¿Compraste las entradas? —Sí, compré.”",modelo:"(a) La vi en el cine. (b) Sí, las compré.",chk:["Troquei “a ella” pelo pronome la, antes do verbo?","Coloquei las em “Sí, las compré”?"]}
+  ]
+ }
+];
+
+/* ====== ESTADO E PERSISTÊNCIA ====== */
+var CHAVE=KIT+'_leitura_v1';
+var mem={};
+var estado=carregar();
+
+function carregar(){
+  try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s); }catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); }
+  return {blocos:{}};
+}
+function calcProgresso(){
+  var conf=0, chkPend=0;
+  BLOCOS.forEach(function(bloco,i){
+    var b=estado.blocos[i]; if(!b||!b.conferido) return; conf++;
+    bloco.perguntas.forEach(function(p,j){ var ep=(b.perguntas&&b.perguntas[j])||{chk:{}}; p.chk.forEach(function(pt,k){ if(!ep.chk||!ep.chk[k]) chkPend++; }); });
+  });
+  estado.progresso={conferidos:conf,total:BLOCOS.length,chkPendentes:chkPend};
+  if(conf===BLOCOS.length && chkPend===0){ if(!estado.concluido){ estado.concluido=true; estado.concluidoEm=new Date().toISOString(); } }
+  return estado.progresso;
+}
+function salvar(){
+  calcProgresso();
+  var s=JSON.stringify(estado);
+  try{ localStorage.setItem(CHAVE,s); }catch(e){ mem[CHAVE]=s; }
+  var d=new Date();
+  document.getElementById('salvo').textContent='💾 Salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR');
+  atualizarTrilhaFim();
+}
+function atualizarPote(){
+  var p=estado.progresso||calcProgresso();
+  var pct=Math.round(p.conferidos/p.total*100);
+  document.getElementById('nivel').style.height=pct+'%';
+  document.getElementById('meta-barra').style.width=pct+'%';
+  document.getElementById('meta-txt').textContent=p.conferidos+' de '+p.total+' fitas assistidas'+(p.conferidos===p.total?' — prateleira completa! 🎉':'');
+}
+function atualizarTrilhaFim(){
+  var p=estado.progresso||calcProgresso();
+  var box=document.getElementById('trilha-fim'), txt=document.getElementById('trilha-fim-txt'), btn=document.getElementById('btn-prox');
+  var h3=box.querySelector('h3');
+  if(estado.concluido||trilhaLiberada()){
+    h3.textContent='✅ Leitura concluída — Quiz destravado!';
+    txt.textContent=estado.concluido?'Você assistiu às 8 fitas e respondeu a autoavaliação. Agora teste o que aprendeu no Balcão de Devolução.':'Trilha liberada pelos pais.';
+    btn.classList.remove('off');
+  } else {
+    h3.textContent='🔒 Próxima etapa: Quiz';
+    var faltam=p.total-p.conferidos;
+    txt.textContent=faltam>0 ? 'Destrava quando você conferir as '+p.total+' fitas (faltam '+faltam+').' : 'Falta responder a autoavaliação Sim/Não de '+p.chkPendentes+' ponto(s) para destravar.';
+    btn.classList.add('off');
+  }
+  atualizarPote();
+  marcarNav();
+}
+function estBloco(i){ if(!estado.blocos[i]) estado.blocos[i]={aberto:i===0,conferido:false,perguntas:{}}; return estado.blocos[i]; }
+function estPerg(i,j){ var b=estBloco(i); if(!b.perguntas[j]) b.perguntas[j]={resp:'',warned:false,red:false,tentou:'',chk:{}}; return b.perguntas[j]; }
+
+/* ====== ANTICÓPIA (motor validado — Português 7º, 08/10/2026) ====== */
+function normPal(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/<[^>]*>/g,' ').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim().split(' ').filter(Boolean);
+}
+function maiorRun(aw,bw){
+  var bStr=' '+bw.join(' ')+' ', best=0;
+  for(var i=0;i<aw.length;i++){
+    for(var len=aw.length-i; len>0; len--){
+      var sub=aw.slice(i,i+len).join(' ');
+      if(bStr.indexOf(' '+sub+' ')>=0){ if(len>best)best=len; break; }
+    }
+  }
+  return best;
+}
+function cobertoPorRuns(aw,bw,minRun){
+  var bStr=' '+bw.join(' ')+' ', cov=new Array(aw.length).fill(false);
+  for(var i=0;i<aw.length;i++){
+    for(var len=aw.length-i; len>=minRun; len--){
+      var sub=aw.slice(i,i+len).join(' ');
+      if(bStr.indexOf(' '+sub+' ')>=0){ for(var k=i;k<i+len;k++)cov[k]=true; break; }
+    }
+  }
+  return cov.filter(Boolean).length;
+}
+function ehCopia(resp, textoBloco, pergunta){
+  var a=normPal(resp), src=normPal(textoBloco), q=normPal(pergunta);
+  if(a.length<5) return false;
+  var qStr=' '+q.join(' ')+' ', keep=new Array(a.length).fill(true);
+  for(var i=0;i<a.length;i++){
+    for(var len=a.length-i; len>=4; len--){
+      var sub=a.slice(i,i+len).join(' ');
+      if(qStr.indexOf(' '+sub+' ')>=0){ for(var k=i;k<i+len;k++)keep[k]=false; break; }
+    }
+  }
+  var af=a.filter(function(w,idx){return keep[idx];});
+  if(af.length<5) return false;
+  var run=maiorRun(af,src);
+  var cov=cobertoPorRuns(af,src,5);
+  var ratio=cov/af.length;
+  return run>=8 || ratio>0.6;
+}
+
+/* ====== RENDER ====== */
+function textoPlano(bloco){ return bloco.texto.join(' ').replace(/\[\[|\]\]/g,' '); }
+function irBloco(i){ var el=document.getElementById('bloco'+i); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+function render(){
+  var cont=document.getElementById('blocos'); cont.innerHTML='';
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i);
+    var div=document.createElement('div'); div.className='bloco '+bloco.u+(b.aberto?'':' travado'); div.id='bloco'+i;
+    var html='<div class="bloco-cab"><div class="moeda">'+bloco.v+'</div><div><div class="rotulo">'+bloco.rotulo+'</div><h3>'+bloco.titulo+'</h3></div></div>';
+    if(!b.aberto){
+      html+='<div class="cadeado">🔒 Esta fita sai da prateleira quando você conferir a anterior.</div>';
+      div.innerHTML=html; cont.appendChild(div); return;
+    }
+    html+='<div class="bloco-corpo"><div class="texto">';
+    bloco.texto.forEach(function(p){ var t=enHTML(p); html+= (t.indexOf('<div')===0 || t.indexOf('<ul')===0 || t.indexOf('<table')===0 ? t : '<p>'+t+'</p>'); });
+    html+='</div>';
+    bloco.perguntas.forEach(function(p,j){
+      var ep=estPerg(i,j);
+      var tagTxt=p.tag==='conc'?'Conceito':'Aplicação';
+      html+='<div class="perg'+(ep.red?' red':'')+'" id="perg'+i+'_'+j+'">';
+      html+='<span class="tag '+p.tag+'">'+tagTxt+'</span>';
+      html+='<label for="ta'+i+'_'+j+'">'+(j+1)+'. '+p.q+'</label>';
+      html+='<textarea id="ta'+i+'_'+j+'" oninput="digitou('+i+','+j+')"></textarea>';
+      html+='<div class="aviso" id="av'+i+'_'+j+'"></div>';
+      html+='<div class="modelo" id="mod'+i+'_'+j+'"><span class="lab">Resposta-modelo</span><p>'+p.modelo+'</p>';
+      html+='<div class="chk" id="chk'+i+'_'+j+'"></div></div>';
+      html+='</div>';
+    });
+    html+='<button class="conferir" id="conf'+i+'" onclick="conferir('+i+')">✔️ Conferir e devolver a fita</button>';
+    html+='<div class="status-bloco" id="st'+i+'"></div>';
+    if(i<BLOCOS.length-1){ html+='<div class="prox" id="px'+i+'"></div>'; }
+    html+='</div>';
+    div.innerHTML=html;
+    cont.appendChild(div);
+    bloco.perguntas.forEach(function(p,j){ var ta=document.getElementById('ta'+i+'_'+j); if(ta) ta.value=estPerg(i,j).resp||''; });
+  });
+  ligarAudio(cont);
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i);
+    if(b.aberto && b.conferido){ mostrarConferido(i); }
+    atualizarBotao(i);
+  });
+  atualizarRelatorio();
+  atualizarTrilhaFim();
+}
+
+function digitou(i,j){
+  var ep=estPerg(i,j);
+  ep.resp=document.getElementById('ta'+i+'_'+j).value;
+  if(ep.red){
+    var bloco=BLOCOS[i];
+    if(!ehCopia(ep.resp, textoPlano(bloco), bloco.perguntas[j].q)){
+      ep.red=false;
+      var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.remove('red');
+      var av=document.getElementById('av'+i+'_'+j); if(av){av.className='aviso'; av.textContent='';}
+    }
+  }
+  atualizarBotao(i);
+  salvar();
+  atualizarRelatorio();
+}
+
+function atualizarBotao(i){
+  var b=estBloco(i); if(!b.aberto) return;
+  var btn=document.getElementById('conf'+i); if(!btn) return;
+  if(b.conferido){ btn.disabled=true; return; }
+  var todas=true;
+  BLOCOS[i].perguntas.forEach(function(p,j){
+    var v=(document.getElementById('ta'+i+'_'+j)||{}).value||estPerg(i,j).resp||'';
+    if(v.trim().length<3) todas=false;
+  });
+  btn.disabled=!todas;
+}
+
+function conferir(i){
+  var bloco=BLOCOS[i], b=estBloco(i);
+  var algumBloqueado=false;
+  bloco.perguntas.forEach(function(p,j){
+    var ep=estPerg(i,j);
+    ep.resp=document.getElementById('ta'+i+'_'+j).value;
+    var av=document.getElementById('av'+i+'_'+j);
+    var copia=ehCopia(ep.resp, textoPlano(bloco), p.q);
+    if(copia){
+      if(!ep.warned || ep.resp===ep.tentou && !ep.segunda){
+        if(!ep.warned){ ep.warned=true; ep.tentou=ep.resp; }
+        av.className='aviso amarelo';
+        av.innerHTML='✋ Boa parte da sua resposta está igual ao texto. Tente <b>reescrever com as suas palavras</b> — explique como se fosse para um amigo, sem olhar o texto. Pode ficar mais curto e simples: o que vale é ser <b>SEU</b>.';
+        algumBloqueado=true;
+      } else {
+        ep.segunda=true; ep.red=true;
+        av.className='aviso vermelho';
+        av.innerHTML='🔴 Esta resposta continua muito parecida com o texto. Ela foi aceita, mas ficou marcada para revisar. Se reescrever com as suas palavras, a marca some.';
+        document.getElementById('perg'+i+'_'+j).classList.add('red');
+      }
+    } else {
+      ep.red=false;
+      if(av){ av.className='aviso'; av.textContent=''; }
+      var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.remove('red');
+    }
+  });
+  salvar();
+  if(algumBloqueado){
+    document.getElementById('st'+i).innerHTML='<span style="color:var(--ouro)">✍️ Altere as respostas marcadas em amarelo e clique em Conferir de novo.</span>';
+    return;
+  }
+  b.conferido=true;
+  if(i<BLOCOS.length-1){ estBloco(i+1).aberto=true; }
+  salvar();
+  render();
+  var alvo=document.getElementById('bloco'+i);
+  if(alvo) alvo.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function mostrarConferido(i){
+  var bloco=BLOCOS[i];
+  bloco.perguntas.forEach(function(p,j){
+    var ep=estPerg(i,j);
+    var mod=document.getElementById('mod'+i+'_'+j); if(mod) mod.classList.add('show');
+    if(ep.red){ var pd=document.getElementById('perg'+i+'_'+j); if(pd) pd.classList.add('red');
+      var av=document.getElementById('av'+i+'_'+j); if(av){av.className='aviso vermelho'; av.innerHTML='🔴 Resposta marcada para revisar (muito parecida com o texto). Reescreva com as suas palavras para tirar a marca.';}
+    }
+    var chk=document.getElementById('chk'+i+'_'+j); if(chk){
+      var h='<b style="font-size:.8rem;color:#9be3b6">Confira você: a sua resposta…</b>';
+      p.chk.forEach(function(pt,k){
+        var val=ep.chk[k]||'';
+        h+='<div class="item"><span>'+pt+'</span><span class="simnao">'
+         +'<button class="sim'+(val==='sim'?' ativo':'')+'" onclick="marcarChk('+i+','+j+','+k+',\'sim\')">Sim</button>'
+         +'<button class="nao'+(val==='nao'?' ativo':'')+'" onclick="marcarChk('+i+','+j+','+k+',\'nao\')">Não</button>'
+         +'</span></div>';
+      });
+      chk.innerHTML=h;
+    }
+  });
+  atualizarStatusBloco(i);
+  var btn=document.getElementById('conf'+i); if(btn){ btn.textContent='📼 Fita devolvida (rebobinada!)'; btn.disabled=true; }
+  if(i<BLOCOS.length-1){
+    var px=document.getElementById('px'+i);
+    if(px) px.innerHTML='<a href="#bloco'+(i+1)+'" onclick="irBloco('+(i+1)+');return false;">➡️ Pegar a próxima fita</a>';
+  }
+}
+
+function marcarChk(i,j,k,val){
+  var ep=estPerg(i,j); ep.chk[k]=val;
+  salvar(); mostrarConferido(i); atualizarStatusBloco(i); atualizarRelatorio();
+}
+
+function statusPergunta(i,j){
+  var ep=estPerg(i,j), p=BLOCOS[i].perguntas[j];
+  if(ep.red) return 'revisar';
+  var temNao=false, todasResp=true;
+  p.chk.forEach(function(pt,k){ if(ep.chk[k]==='nao') temNao=true; if(!ep.chk[k]) todasResp=false; });
+  if(temNao) return 'revisar';
+  if(!todasResp) return 'pendente';
+  return 'ok';
+}
+function atualizarStatusBloco(i){
+  var st=document.getElementById('st'+i); if(!st) return;
+  var revisar=false, pendente=false;
+  BLOCOS[i].perguntas.forEach(function(p,j){ var s=statusPergunta(i,j); if(s==='revisar')revisar=true; if(s==='pendente')pendente=true; });
+  if(revisar) st.innerHTML='<span style="color:#ffb8b8">🔁 Esta fita tem pontos para revisar.</span>';
+  else if(pendente) st.innerHTML='<span style="color:var(--ouro)">📝 Responda a autoavaliação (Sim/Não) de cada pergunta.</span>';
+  else st.innerHTML='<span style="color:#9be3b6">✅ Fita concluída com sucesso!</span>';
+  atualizarRelatorio();
+}
+
+function atualizarRelatorio(){
+  var lista=[], totalConf=0, totalRed=0, totalNao=0;
+  BLOCOS.forEach(function(bloco,i){
+    var b=estBloco(i); if(!b.conferido) return; totalConf++;
+    bloco.perguntas.forEach(function(p,j){
+      var ep=estPerg(i,j);
+      if(ep.red){ totalRed++; lista.push('Fita '+(i+1)+' ('+bloco.titulo+'): pergunta '+(j+1)+' — resposta muito parecida com o texto.'); }
+      p.chk.forEach(function(pt,k){ if(ep.chk[k]==='nao'){ totalNao++; lista.push('Fita '+(i+1)+' ('+bloco.titulo+'): revisar — "'+pt+'"'); } });
+    });
+  });
+  var rev=document.getElementById('revisar'), rl=document.getElementById('revisar-lista');
+  if(lista.length){ rev.style.display='block'; rl.innerHTML=lista.map(function(x){return '<li>'+x+'</li>';}).join(''); }
+  else { rev.style.display='none'; rl.innerHTML=''; }
+  var rc=document.getElementById('rel-conteudo');
+  rc.innerHTML='<b>Fitas conferidas:</b> '+totalConf+' de '+BLOCOS.length+'.<br>'
+    +'<b>Respostas marcadas (muito parecidas com o texto):</b> '+totalRed+'.<br>'
+    +'<b>Pontos marcados como "Não" na autoavaliação:</b> '+totalNao+'.<br>'
+    +(lista.length? '<span style="color:#ffb8b8">Há '+lista.length+' ponto(s) para revisar (lista acima).</span>' : '<span style="color:#9be3b6">Sem pontos pendentes para revisar. 👏</span>');
+}
+
+/* ====== EXPORTAR / IMPORTAR / ZERAR ====== */
+function exportar(){
+  var dados=JSON.stringify(estado,null,2);
+  var blob=new Blob([dados],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='leitura-guiada_locadora-rebobina.json'; a.click();
+}
+function importar(ev){
+  var f=ev.target.files[0]; if(!f) return;
+  var r=new FileReader();
+  r.onload=function(){ try{ estado=JSON.parse(r.result); salvar(); render(); mostrarModal('✅ Progresso importado!',false); }catch(e){ mostrarModal('❌ Arquivo inválido.',false); } };
+  r.readAsText(f);
+}
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Tem certeza que quer apagar TODO o progresso desta leitura? (O Quiz continua destravado se já tiver sido destravado.)',true); }
+function mostrarModal(txt,confirmar){
+  document.getElementById('modal-txt').innerHTML=txt;
+  document.getElementById('modal').classList.add('show');
+  document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none';
+  document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar && acaoZerar){ var c=estado.concluido, ce=estado.concluidoEm; estado={blocos:{}}; if(c){estado.concluido=true; estado.concluidoEm=ce;} salvar(); render(); } acaoZerar=null; fecharModal(); };
+}
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+ligarAudio(document.querySelector('.peg'));
+render();
+</script>
+</body>
+</html>
