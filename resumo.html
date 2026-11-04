@@ -311,6 +311,12 @@ var REL=[
  {p:"<span class='es'>Pedro compró flores. → Pedro ___ compró.</span>",ops:["las","los"],ok:0,e:"Flores = feminino plural → las."},
  {p:"<span class='es'>Si te gusta, ___.</span>",ops:["cómprala","la compra ella"],ok:0,e:"Imperativo → pronome depois e grudado: cómprala."}
 ];
+function montarRelampago(){
+  var c=document.getElementById('relampago'); var h='';
+  REL.forEach(function(q,i){ h+='<div class="pq"><div>'+(i+1)+'. '+q.p+'</div>'; q.ops.forEach(function(o,k){ h+='<button class="op" id="r'+i+'_'+k+'" onclick="resp('+i+','+k+')">'+o+'</button>'; }); h+='<div class="fb" id="rf'+i+'"></div></div>'; });
+  c.innerHTML=h;
+}
+function resp(i,k){ var q=REL[i]; for(var j=0;j<q.ops.length;j++){ document.getElementById('r'+i+'_'+j).className='op'+(j===q.ok?' ok':(j===k?' no':'')); } document.getElementById('rf'+i).innerHTML=(k===q.ok?'✅ ':'❌ ')+q.e; }
 
 /* ====== ESTADO DO RESUMO ====== */
 var CHAVE=KIT+'_resumo_v1'; var mem={}; var estado=carregar();
