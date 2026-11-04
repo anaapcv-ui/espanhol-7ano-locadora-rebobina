@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz · Locadora Rebobina · Espanhol 7º</title>
+<style>
+  :root{--fundo:#15120f;--fundo2:#221c16;--fundo3:#0e0b09;--borda:#3d342b;--borda2:#5a4a3a;--ouro:#ffd23f;--coral:#ff5a5a;--turq:#4d8dff;--lilas:#ff9f43;--verde:#3ddc84;--vermelho:#ff4b4b;--texto:#f6efe4;--cinza:#ab9f8e;--creme:#f7f0e2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:radial-gradient(900px 480px at 50% -8%,#3b2a14,#15120f 64%),var(--fundo);color:var(--texto);line-height:1.6;padding-bottom:60px}
+  h1,h2,h3{font-family:Tahoma,'Arial Rounded MT Bold',Verdana,sans-serif}
+  header{background:linear-gradient(120deg,#1f1813,#2e241a);padding:24px 18px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.5);border-bottom:4px solid var(--coral)}
+  header .selo{font-size:.78rem;letter-spacing:2px;color:#ffe9a3;text-transform:uppercase}
+  header h1{font-size:1.5rem;margin:6px 0 2px}
+  header p{color:#e6dccb;font-size:.92rem}
+  .wrap{max-width:820px;margin:0 auto;padding:16px}
+  .barra-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+  .barra-nav a{background:var(--fundo2);color:var(--texto);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:.85rem;border:1px solid var(--borda)}
+  .barra-nav a.on{background:var(--ouro);color:#2a2000;font-weight:bold}
+  .barra-nav a.lock{opacity:.5}
+  .intro{background:var(--fundo2);border:1px solid var(--borda);border-radius:14px;padding:16px;margin-bottom:16px}
+  .intro h2{color:var(--ouro);font-size:1.1rem;margin-bottom:8px}
+  .painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--fundo2);border:1px solid var(--borda);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:.85rem}
+  .painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+  button{cursor:pointer;font-family:inherit}
+  .mini{background:var(--fundo);color:var(--texto);border:1px solid var(--borda2);border-radius:8px;padding:6px 10px;font-size:.8rem}
+  .codigo{position:sticky;top:0;z-index:20;background:linear-gradient(120deg,#1f2c1c,#2b4423);border:2px solid var(--verde);border-radius:14px;padding:12px 16px;text-align:center;margin-bottom:16px;display:none}
+  .codigo.show{display:block}
+  .codigo .cod{font-size:1.7rem;font-weight:bold;letter-spacing:3px;color:#9be3b6;margin:4px 0}
+  .progresso{height:10px;background:var(--borda);border-radius:6px;overflow:hidden;margin-bottom:16px}
+  .progresso div{height:100%;background:linear-gradient(90deg,var(--ouro),var(--coral));width:0;transition:width .3s}
+  .q{background:var(--fundo2);border:1px solid var(--borda);border-radius:16px;padding:16px;margin-bottom:14px}
+  .q .num{color:var(--ouro);font-weight:bold;font-size:.8rem;letter-spacing:1px;text-transform:uppercase}
+  .q .tema{float:right;font-size:.7rem;color:var(--cinza);background:var(--fundo);border:1px solid var(--borda2);border-radius:10px;padding:2px 8px}
+  .q h3{font-size:1rem;margin:6px 0 10px;font-weight:600;font-family:'Segoe UI',system-ui,Arial,sans-serif}
+  .es{color:#ffe28a;font-style:italic}
+  .alt{display:block;background:var(--fundo3);border:1px solid var(--borda2);border-radius:10px;padding:10px 12px;margin:6px 0;cursor:pointer}
+  .alt:hover{border-color:var(--ouro)}
+  .alt input{margin-right:8px}
+  .alt.sel{border-color:var(--ouro);background:#2e2a10}
+  .alt.certa{border-color:var(--verde);background:#1b2b1c}
+  .alt.errada{border-color:#555;background:#1a1c18;color:#aaa}
+  .alt.marcada-errada{border-color:var(--vermelho);background:#3a1616}
+  .exp{margin-top:8px;font-size:.88rem;padding:8px 10px;border-radius:8px;background:var(--fundo3);border-left:3px solid var(--ouro);display:none}
+  .alt.certa .exp{border-left-color:var(--verde);color:#c9f2d6}
+  .alt.errada .exp,.alt.marcada-errada .exp{border-left-color:#777;color:#bbb}
+  .exp.show{display:block}
+  .enviar{width:100%;background:var(--coral);color:#3a0808;border:none;border-radius:12px;padding:14px;font-size:1.05rem;font-weight:bold;margin:10px 0}
+  .enviar:disabled{background:#2e2620;color:#8a7d6d;cursor:not-allowed}
+  .gab{background:var(--fundo2);border:1px dashed var(--ouro);border-radius:14px;padding:16px;margin:16px 0;display:none}
+  .gab.show{display:block}
+  .gab input{padding:9px;border-radius:8px;border:1px solid var(--borda2);background:#0c0a08;color:var(--texto);font-size:1rem;width:180px;text-transform:uppercase}
+  .gab button{background:var(--ouro);color:#2a2000;border:none;border-radius:8px;padding:9px 14px;font-weight:bold;margin-left:6px}
+  .gab .msg{margin-top:8px;font-size:.9rem}
+  .trilha-fim{background:linear-gradient(120deg,#1f2c1c,#24361f);border:2px solid var(--verde);border-radius:16px;padding:18px;margin-top:18px;text-align:center}
+  .trilha-fim h3{color:#9be3b6;margin-bottom:8px}
+  .trilha-fim a.btn{display:inline-block;margin-top:8px;background:var(--verde);color:#062012;text-decoration:none;font-weight:bold;padding:11px 20px;border-radius:10px}
+  .trilha-fim a.btn.off{background:#2e2620;color:#8a7d6d;pointer-events:none}
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(8,10,6,.97);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--fundo2);border:1px solid var(--ouro);border-radius:14px;padding:22px;max-width:440px;text-align:center}
+  .modal p{margin-bottom:14px}
+  .modal .big{font-size:2.2rem}
+  .modal a,.modal button{display:inline-block;background:var(--ouro);color:#2a2000;border:none;border-radius:8px;padding:10px 18px;font-weight:bold;text-decoration:none}
+  .rodape{text-align:center;color:var(--cinza);font-size:.8rem;margin-top:24px}
+</style>
+</head>
+<body>
+<header>
+  <div class="selo">Locadora Rebobina · Espanhol 7º ano · CCF</div>
+  <h1>🎯 Quiz · Balcão de Devolução</h1>
+  <p>15 questões · Unidad 8 · El cine y las series · Código MED para os pais</p>
+</header>
+
+<div class="wrap">
+  <nav class="barra-nav" id="nav">
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a class="on" href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html" data-etapa="resumo">🗺️ Resumo</a>
+    <a href="simulado.html" data-etapa="simulado">📝 Simulado</a>
+    <a href="index.html">🏠 Início</a>
+  </nav>
+
+  <div class="codigo" id="codigo"><div>Seu código de liberação</div><div class="cod" id="cod"></div><div id="codtxt"></div></div>
+
+  <div class="intro">
+    <h2>📼 Balcão de Devolução: 15 fitas para conferir</h2>
+    <p>Responda as <b>15 questões</b> (todas obrigatórias). Depois de <b>Enviar</b>, as respostas travam, sai o seu <b>código MED</b> e o gabarito comentado abre com o código. Ao enviar, o <b>🗺️ Resumo destrava</b>.</p>
+  </div>
+
+  <div class="painel">
+    <span id="salvo">💾 Progresso salvo automaticamente.</span>
+    <div class="btns">
+      <button class="mini" onclick="exportar()">📥 Exportar</button>
+      <button class="mini" onclick="document.getElementById('imp').click()">📤 Importar</button>
+      <input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)">
+      <button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button>
+    </div>
+  </div>
+
+  <div class="progresso"><div id="barra"></div></div>
+  <div id="questoes"></div>
+  <button class="enviar" id="btn-enviar" onclick="enviar()" disabled>📨 Enviar respostas (responda todas)</button>
+
+  <div class="gab" id="gab">
+    <b>🔑 Gabarito comentado:</b> digite o código MED que apareceu no topo.<br>
+    <input id="gab-in" placeholder="MED-XX-YY"><button onclick="abrirGab()">Ver gabarito</button>
+    <div class="msg" id="gab-msg"></div>
+  </div>
+
+  <div class="trilha-fim" id="trilha-fim">
+    <h3>🔒 Próxima etapa: Resumo</h3>
+    <p id="trilha-fim-txt">O Resumo destrava quando você enviar o Quiz.</p>
+    <a class="btn off" id="btn-prox" href="resumo.html">🗺️ Ir para o Resumo</a>
+  </div>
+
+  <div class="rodape">Feito com carinho para o jovem aprendiz. 📼</div>
+</div>
+
+<div class="modal-bg" id="lock">
+  <div class="modal">
+    <div class="big">🔒</div>
+    <p><b>Esta etapa ainda está trancada.</b></p>
+    <p id="lock-txt">Para abrir o Quiz, conclua a Leitura Guiada.</p>
+    <a href="index.html">Voltar ao início</a>
+  </div>
+</div>
+<div class="modal-bg" id="modal" style="background:rgba(0,0,0,.75)">
+  <div class="modal">
+    <p id="modal-txt"></p>
+    <button onclick="fecharModal()" id="modal-ok">Ok</button>
+    <button class="mini" onclick="fecharModal()" id="modal-cancel" style="display:none;margin-left:8px">Cancelar</button>
+  </div>
+</div>
+
+<script>
+/* ====== TRILHA COM CADEADOS (módulo comum do kit) ====== */
+var KIT='locadora_rebobina_esp7';
+var TRILHA=[
+ {id:'leitura', chave:KIT+'_leitura_v1', nome:'Leitura Guiada', arquivo:'leitura-guiada.html', emoji:'📖'},
+ {id:'quiz', chave:KIT+'_quiz_v1', nome:'Quiz', arquivo:'quiz.html', emoji:'🎯'},
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ return null; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapaConcluida(id){ var e=TRILHA.filter(function(t){return t.id===id;})[0]; var d=lerJSON(e.chave); return !!(d&&d.concluido); }
+function podeAbrir(id){ var idx=TRILHA.map(function(t){return t.id;}).indexOf(id); if(idx<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[idx-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+links[i].textContent.replace('🔒 ',''); } else { links[i].classList.remove('lock'); links[i].textContent=links[i].textContent.replace('🔒 ',''); } }
+}
+function checarTrava(){
+  if(podeAbrir('quiz')) return true;
+  var L=lerJSON(KIT+'_leitura_v1'); var p=(L&&L.progresso)||{conferidos:0,total:8,chkPendentes:0};
+  var faltam=p.total-p.conferidos;
+  var txt= faltam>0 ? 'Para abrir o Quiz, conclua a Leitura Guiada: faltam '+faltam+' de '+p.total+' fitas.' : 'Para abrir o Quiz, responda a autoavaliação Sim/Não da Leitura Guiada ('+p.chkPendentes+' ponto(s) pendente(s)).';
+  document.getElementById('lock-txt').textContent=txt;
+  document.getElementById('lock').classList.add('show');
+  document.querySelector('.wrap').style.filter='blur(6px)';
+  return false;
+}
+
+/* ====== QUESTÕES (só Unidad 8: pp. 118, 119, 122, 123, 126 e 127) — a correta é guardada pelo id ====== */
+var Q=[
+ {tema:"Géneros · p. 118",p:"No livro, o ícone do <b>chapéu de caubói</b> representa qual gênero?",alts:[
+  {id:"a",t:"<span class='es'>del oeste</span>",ok:true,e:"Del oeste = faroeste; o ícone é o chapéu de caubói."},
+  {id:"b",t:"<span class='es'>aventura</span>",e:"O ícone de aventura é um grupo de pessoas."},
+  {id:"c",t:"<span class='es'>histórico</span>",e:"O ícone de histórico é um mapa com caminho."},
+  {id:"d",t:"<span class='es'>policíaco</span>",e:"O ícone de policíaco é o chapéu-coco com máscara."}]},
+ {tema:"Géneros · p. 126",p:"<span class='es'>“Género que busca provocar miedo y ansiedad en el espectador por medio de elementos sobrenaturales o de horror visceral, explorando lo desconocido y lo macabro.”</span> Qual é o gênero?",alts:[
+  {id:"a",t:"<span class='es'>terror</span>",ok:true,e:"As pistas são miedo (medo), sobrenaturales e macabro."},
+  {id:"b",t:"<span class='es'>suspense</span>",e:"Suspense é tensão, incerteza e reviravoltas (tensión, incertidumbre, giros inesperados)."},
+  {id:"c",t:"<span class='es'>drama</span>",e:"Drama é sobre emoções, relações e conflitos."},
+  {id:"d",t:"<span class='es'>ciencia ficción</span>",e:"Ciencia ficción tem cenários futuristas, ciência e tecnologia."}]},
+ {tema:"Géneros · p. 126",p:"<span class='es'>“Género que presenta hechos, personas o eventos reales de manera objetiva, informativa y a menudo educativa.”</span> Qual é o gênero?",alts:[
+  {id:"a",t:"<span class='es'>documental</span>",ok:true,e:"A pista é hechos reales: o documental mostra fatos reais."},
+  {id:"b",t:"<span class='es'>musical</span>",e:"Musical integra música, canções e coreografias."},
+  {id:"c",t:"<span class='es'>fantasia</span>",e:"Fantasia (ícone do castelo) não é sobre fatos reais."},
+  {id:"d",t:"<span class='es'>comedia</span>",e:"Comedia (ícone da carinha rindo) não é a definição de fatos reais."}]},
+ {tema:"Géneros · p. 126",p:"Uma questão diz: <span class='es'>“genera tensión y anticipación… con giros inesperados y revelaciones impactantes”</span>. É a definição de:",alts:[
+  {id:"a",t:"<span class='es'>suspense</span>",ok:true,e:"Tensión, anticipación e giros inesperados são as pistas do suspense."},
+  {id:"b",t:"<span class='es'>terror</span>",e:"Terror é medo e coisas sobrenaturais/macabras."},
+  {id:"c",t:"<span class='es'>documental</span>",e:"Documental mostra fatos reais de forma objetiva."},
+  {id:"d",t:"<span class='es'>romance</span>",e:"Romance gira em torno de um amor."}]},
+ {tema:"Sinopsis · p. 119",p:"<i>La vida de los peces</i>: <span class='es'>“Andrés… regresa a Chile… y redescubre todo un mundo que dejó de ver, incluida Beatriz, su gran amor.”</span> No ex. 3, qual é o gênero?",alts:[
+  {id:"a",t:"<span class='es'>romance</span>",ok:true,e:"A pista é su gran amor."},
+  {id:"b",t:"<span class='es'>documental</span>",e:"Documental é o de Nostalgia de la luz (fatos reais da história do Chile)."},
+  {id:"c",t:"<span class='es'>terror</span>",e:"Não há nada de medo ou sobrenatural na sinopse."},
+  {id:"d",t:"<span class='es'>musical</span>",e:"A sinopse não fala de música nem de canções."}]},
+ {tema:"Conoce más · p. 119",p:"Segundo o quadro <b>Conoce más</b>, <i>Metegol</i> é um filme:",alts:[
+  {id:"a",t:"de animação, argentino, dirigido por Juan José Campanella.",ok:true,e:"Metegol es una película de animación argentina dirigida por Juan José Campanella (2013)."},
+  {id:"b",t:"documentário chileno sobre o cosmos.",e:"Isso lembra Nostalgia de la luz, não Metegol."},
+  {id:"c",t:"de terror, sobre um povoado argentino.",e:"Metegol é animação, sobre um jovem apaixonado por futbolín."},
+  {id:"d",t:"de faroeste, baseado num conto sobre caubóis.",e:"O conto é Memorias de un wing derecho, e o filme é de animação."}]},
+ {tema:"Palabras del cine · p. 119",p:"Complete: <span class='es'>¿Has comprado las ___ para la película de esta noche?</span>",alts:[
+  {id:"a",t:"<span class='es'>entradas</span>",ok:true,e:"Las pede plural, e quem se compra para ver o filme são as entradas (ingressos)."},
+  {id:"b",t:"<span class='es'>actriz</span>",e:"Actriz é singular e não combina com las."},
+  {id:"c",t:"<span class='es'>director</span>",e:"Director é masculino singular e não combina com las."},
+  {id:"d",t:"<span class='es'>pantalla</span>",e:"Pantalla (tela) é singular e não combina com las."}]},
+ {tema:"Palabras del cine · p. 119",p:"No ex. 4, qual palavra completa <span class='es'>“La ___ estaba dispuesta a recibir a los espectadores ansiosos.”</span>?",alts:[
+  {id:"a",t:"<span class='es'>actriz</span>",ok:true,e:"La pede uma palavra feminina no singular: actriz."},
+  {id:"b",t:"<span class='es'>palomitas</span>",e:"Palomitas está no plural (las palomitas)."},
+  {id:"c",t:"<span class='es'>director</span>",e:"Director é masculino (el director)."},
+  {id:"d",t:"<span class='es'>butacas</span>",e:"Butacas está no plural (las butacas)."}]},
+ {tema:"Pluscuamperfecto · p. 122",p:"Segundo o livro, o <b>Pretérito Pluscuamperfecto</b> se forma com:",alts:[
+  {id:"a",t:"o verbo <b>haber</b> no Pretérito Imperfecto + o participio.",ok:true,e:"É exatamente a regra da p. 122: había, habías… + participio."},
+  {id:"b",t:"o verbo <b>haber</b> no presente + o participio.",e:"Haber no presente (he, has, ha…) forma outro tempo, visto na Unidad 5."},
+  {id:"c",t:"o verbo <b>ser</b> no Pretérito Imperfecto + o participio.",e:"O auxiliar é haber, não ser."},
+  {id:"d",t:"o verbo <b>haber</b> no Pretérito Imperfecto + o infinitivo.",e:"Depois de haber vem o participio (visto), não o infinitivo (ver)."}]},
+ {tema:"Pluscuamperfecto · p. 122",p:"No texto da Clarice, qual trecho <b>NÃO</b> está no Pretérito Pluscuamperfecto?",alts:[
+  {id:"a",t:"<span class='es'>estaba encantada</span>",ok:true,e:"Estaba não tem haber + participio, então não é Pluscuamperfecto."},
+  {id:"b",t:"<span class='es'>había visto</span>",e:"Había + visto = Pluscuamperfecto."},
+  {id:"c",t:"<span class='es'>habían dicho</span>",e:"Habían + dicho = Pluscuamperfecto."},
+  {id:"d",t:"<span class='es'>había imaginado</span>",e:"Había + imaginado = Pluscuamperfecto."}]},
+ {tema:"Participios · p. 122",p:"Qual destes particípios é <b>irregular</b> (não termina em -ado ou -ido)?",alts:[
+  {id:"a",t:"<span class='es'>dicho</span>",ok:true,e:"Dicho (de decir) não termina em -ado/-ido: é irregular."},
+  {id:"b",t:"<span class='es'>imaginado</span>",e:"Termina em -ado: é regular."},
+  {id:"c",t:"<span class='es'>escuchado</span>",e:"Termina em -ado: é regular."},
+  {id:"d",t:"<span class='es'>comido</span>",e:"Termina em -ido: é regular."}]},
+ {tema:"Pluscuamperfecto · p. 122",p:"Complete no Pluscuamperfecto: <span class='es'>Nosotros ___ (ver) la película antes de que tú llegaras.</span>",alts:[
+  {id:"a",t:"<span class='es'>habíamos visto</span>",ok:true,e:"Nosotros → habíamos; ver → visto (irregular)."},
+  {id:"b",t:"<span class='es'>habían visto</span>",e:"Habían é de ellos/ellas/ustedes."},
+  {id:"c",t:"<span class='es'>habíais visto</span>",e:"Habíais é de vosotros."},
+  {id:"d",t:"<span class='es'>había visto</span>",e:"Había é de yo ou él/ella/usted."}]},
+ {tema:"Objeto directo · p. 126",p:"Troque o objeto direto pelo pronome: <span class='es'>Pedro compró flores ayer.</span>",alts:[
+  {id:"a",t:"<span class='es'>Pedro las compró ayer.</span>",ok:true,e:"Flores é feminino plural → las, antes do verbo conjugado."},
+  {id:"b",t:"<span class='es'>Pedro lo compró ayer.</span>",e:"Lo é masculino singular; flores é feminino plural."},
+  {id:"c",t:"<span class='es'>Pedro los compró ayer.</span>",e:"Los é masculino plural; flores é feminino."},
+  {id:"d",t:"<span class='es'>Pedro la compró ayer.</span>",e:"La é singular; flores está no plural."}]},
+ {tema:"Objeto directo · p. 123",p:"Com o verbo no <b>imperativo</b>, onde fica o pronome? Escolha a forma do livro:",alts:[
+  {id:"a",t:"<span class='es'>Si te gusta, cómprala.</span>",ok:true,e:"No imperativo, o pronome vai depois do verbo e grudado nele."},
+  {id:"b",t:"<span class='es'>Si te gusta, compra ella.</span>",e:"Não se usa o pronome sujeito (ella) no lugar do objeto direto."},
+  {id:"c",t:"<span class='es'>Si te gusta, compra la.</span>",e:"O pronome fica grudado no verbo: cómprala."},
+  {id:"d",t:"<span class='es'>Si te gusta, la cómprala.</span>",e:"O pronome aparece uma vez só, grudado no fim: cómprala."}]},
+ {tema:"¡Ojo! · p. 123",p:"Qual frase está <b>correta</b> em espanhol, segundo o ¡Ojo! do livro?",alts:[
+  {id:"a",t:"<span class='es'>La vi en el cine.</span>",ok:true,e:"O pronome de objeto direto la vem antes do verbo conjugado."},
+  {id:"b",t:"<span class='es'>Vi a ella en el cine.</span>",e:"O livro diz que “Vi a ella” não se admite em espanhol."},
+  {id:"c",t:"<span class='es'>Vi ella en el cine.</span>",e:"Ella é pronome sujeito; não substitui o objeto direto."},
+  {id:"d",t:"<span class='es'>Ella vi en el cine.</span>",e:"Ella é pronome sujeito; o objeto direto é la."}]}
+];
+
+/* ====== EMBARALHAMENTO COM SEMENTE FIXA (mulberry32) ====== */
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+var rnd=mulberry32(51126711);
+Q.forEach(function(q){ var arr=q.alts.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var tmp=arr[i]; arr[i]=arr[j]; arr[j]=tmp; } q.ordem=arr; });
+
+/* ====== ESTADO ====== */
+var CHAVE=KIT+'_quiz_v1'; var mem={}; var estado=carregar();
+function carregar(){ try{ var s=localStorage.getItem(CHAVE); if(s) return JSON.parse(s);}catch(e){ if(mem[CHAVE]) return JSON.parse(mem[CHAVE]); } return {resp:{},enviado:false}; }
+function salvar(){ var s=JSON.stringify(estado); try{ localStorage.setItem(CHAVE,s);}catch(e){ mem[CHAVE]=s; } var d=new Date(); document.getElementById('salvo').textContent='💾 Salvo às '+d.toLocaleTimeString('pt-BR')+' de '+d.toLocaleDateString('pt-BR'); }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(ac){ var xx=(ac<10?'0':'')+ac; var yy=LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; return 'MED-'+xx+'-'+yy; }
+
+function render(){
+  var c=document.getElementById('questoes'); var h='';
+  Q.forEach(function(q,i){
+    h+='<div class="q" id="q'+i+'"><span class="tema">'+q.tema+'</span><div class="num">Fita '+(i+1)+' de '+Q.length+'</div><h3>'+q.p+'</h3>';
+    q.ordem.forEach(function(a,k){
+      var letra='abcd'[k]; var sel=estado.resp[i]===a.id;
+      var cls='alt'+(sel?' sel':'');
+      if(estado.gabarito){ if(a.ok) cls+=' certa'; else if(sel) cls+=' marcada-errada'; else cls+=' errada'; }
+      h+='<label class="'+cls+'"><input type="radio" name="q'+i+'" value="'+a.id+'" '+(sel?'checked':'')+' '+(estado.enviado?'disabled':'')+' onchange="marcar('+i+',\''+a.id+'\')"> <b>'+letra+')</b> '+a.t;
+      if(estado.gabarito){ h+='<div class="exp show">'+(a.ok?'✅ Correta: ':'✖ ')+a.e+'</div>'; }
+      h+='</label>';
+    });
+    h+='</div>';
+  });
+  c.innerHTML=h;
+  atualizarBarra();
+  if(estado.enviado){ mostrarEnviado(); }
+  atualizarTrilhaFim();
+}
+function marcar(i,id){ if(estado.enviado) return; estado.resp[i]=id; salvar(); var q=document.getElementById('q'+i); var labs=q.querySelectorAll('.alt'); for(var k=0;k<labs.length;k++){ labs[k].classList.toggle('sel', labs[k].querySelector('input').value===id); } atualizarBarra(); }
+function atualizarBarra(){ var n=Object.keys(estado.resp).length; document.getElementById('barra').style.width=(n/Q.length*100)+'%'; var b=document.getElementById('btn-enviar'); if(!estado.enviado){ b.disabled=n<Q.length; b.textContent=n<Q.length?'📨 Enviar respostas ('+n+' de '+Q.length+' respondidas)':'📨 Enviar respostas'; } }
+function enviar(){
+  if(estado.enviado) return;
+  if(Object.keys(estado.resp).length<Q.length) return;
+  var ac=0; Q.forEach(function(q,i){ var a=q.alts.filter(function(x){return x.id===estado.resp[i];})[0]; if(a&&a.ok) ac++; });
+  estado.acertos=ac; estado.total=Q.length; estado.codigo=gerarCodigo(ac); estado.enviado=true; estado.concluido=true; estado.concluidoEm=new Date().toISOString();
+  salvar(); render(); window.scrollTo({top:0,behavior:'smooth'});
+}
+function mostrarEnviado(){
+  var b=document.getElementById('btn-enviar'); b.disabled=true; b.textContent='✅ Quiz enviado — respostas travadas';
+  document.getElementById('codigo').classList.add('show'); document.getElementById('cod').textContent=estado.codigo;
+  document.getElementById('codtxt').textContent='Anote este código para os pais. Ele abre o gabarito comentado e o relatório no Início.';
+  document.getElementById('gab').classList.add('show');
+}
+function abrirGab(){ var v=document.getElementById('gab-in').value.trim().toUpperCase(); var m=document.getElementById('gab-msg'); if(estado.enviado&&(v===estado.codigo||v==='PAIS-77')){ estado.gabarito=true; salvar(); render(); document.getElementById('gab-msg').innerHTML='<span style="color:#9be3b6">Gabarito liberado: '+estado.acertos+' acertos de '+Q.length+'.</span>'; } else { m.innerHTML='<span style="color:#ffb8b8">Código incorreto.</span>'; } }
+function atualizarTrilhaFim(){
+  var box=document.getElementById('trilha-fim'), txt=document.getElementById('trilha-fim-txt'), btn=document.getElementById('btn-prox'); var h3=box.querySelector('h3');
+  if(estado.concluido||trilhaLiberada()){ h3.textContent='✅ Quiz enviado — Resumo destravado!'; txt.textContent=estado.concluido?'Agora use o Resumo (o Catálogo da Locadora) para fechar as dúvidas que o Quiz mostrou.':'Trilha liberada pelos pais.'; btn.classList.remove('off'); }
+  else { h3.textContent='🔒 Próxima etapa: Resumo'; txt.textContent='Destrava quando você enviar o Quiz.'; btn.classList.add('off'); }
+  marcarNav();
+}
+function exportar(){ var blob=new Blob([JSON.stringify(estado,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='quiz_locadora-rebobina.json'; a.click(); }
+function importar(ev){ var f=ev.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{ estado=JSON.parse(r.result); salvar(); render(); mostrarModal('✅ Progresso importado!',false);}catch(e){ mostrarModal('❌ Arquivo inválido.',false);} }; r.readAsText(f); }
+var acaoZerar=null;
+function pedirZerar(){ acaoZerar=true; mostrarModal('Apagar as respostas deste Quiz? (Se ele já foi enviado, o código e a conclusão são mantidos.)',true); }
+function mostrarModal(txt,confirmar){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); document.getElementById('modal-cancel').style.display=confirmar?'inline-block':'none'; document.getElementById('modal-ok').textContent=confirmar?'Sim, apagar':'Ok';
+  document.getElementById('modal-ok').onclick=function(){ if(confirmar&&acaoZerar){ if(!estado.enviado){ estado={resp:{},enviado:false}; salvar(); render(); } else { acaoZerar=null; mostrarModal('O Quiz já foi enviado: as respostas ficam travadas. Para refazer do zero, use "Zerar o kit inteiro" no Início (com o código dos pais).',false); return; } } acaoZerar=null; fecharModal(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+
+if(checarTrava()){ render(); } else { marcarNav(); }
+</script>
+</body>
+</html>
